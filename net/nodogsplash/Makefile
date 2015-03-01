@@ -48,6 +48,7 @@ define Package/nodogsplash/install
 	$(INSTALL_CONF) files/nodogsplash.config $(1)/etc/config/nodogsplash
 
 	$(INSTALL_DIR) $(1)/etc/$(PKG_NAME)/htdocs/images
+	$(INSTALL_CONF) files/nodogsplash.conf $(1)/etc/htdocs
 	$(CP) $(PKG_BUILD_DIR)/resources/splash.html $(1)/etc/$(PKG_NAME)/htdocs/
 	$(CP) $(PKG_BUILD_DIR)/resources/infoskel.html $(1)/etc/$(PKG_NAME)/htdocs/
 	$(CP) $(PKG_BUILD_DIR)/resources/splash.jpg $(1)/etc/$(PKG_NAME)/htdocs/images/
