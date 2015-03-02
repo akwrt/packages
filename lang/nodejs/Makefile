@@ -57,6 +57,7 @@ $(call Package/nodejs/Default)
 endef
 
 define Package/nodejs-npm/description
+$(call Package/nodejs/Default/description)
   npm is the package manager for the Node JavaScript platform. It puts
   modules in place so that node can find them, and manages dependency
   conflicts intelligently.
