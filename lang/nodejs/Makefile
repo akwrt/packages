@@ -24,43 +24,21 @@ PKG_INSTALL:=1
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
 
-define Package/nodejs/Default
-  SUBMENU:=nodejs
+define Package/nodejs
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Node.js Evented I/O for V8 JavaScript
+  TITLE:=Node.js is a platform built on Chrome's JavaScript runtime
   URL:=http://nodejs.org
   MAINTAINER:=Xin Ouyang <xinpascal@gmail.com>
+  DEPENDS:=@armeb||@arm||@i386 +libstdcpp +libpthread +librt +libopenssl
 endef
 
-define Package/nodejs/Default/description
+define Package/nodejs/description
  Node.js is a platform built on Chrome's JavaScript runtime for easily
  building fast, scalable network applications. Node.js uses an event-driven,
  non-blocking I/O model that makes it lightweight and efficient, perfect
  for data-intensive real-time applications that run across distributed
  devices.
-endef
-
-define Package/nodejs
-$(call Package/nodejs/Default)
-  DEPENDS:=@armeb||@arm||@i386 +libstdcpp +libpthread +librt +libopenssl
-endef
-
-define Package/nodejs/description
-$(call Package/nodejs/Default/description)
-endef
-
-define Package/nodejs-npm
-$(call Package/nodejs/Default)
-  TITLE:=Node Package Manager
-  DEPENDS:=@armeb||@arm||@i386 +libstdcpp +libpthread +librt +libopenssl
-endef
-
-define Package/nodejs-npm/description
-$(call Package/nodejs/Default/description)
-  npm is the package manager for the Node JavaScript platform. It puts
-  modules in place so that node can find them, and manages dependency
-  conflicts intelligently.
 endef
 
 HOST_CONFIGURE_CMD = $(HOST_CONFIGURE_VARS) ./configure
@@ -78,10 +56,6 @@ MAKE_FLAGS += \
 define Package/nodejs/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/node $(1)/usr/bin/node
-endef
-
-define Package/nodejs-npm/install
-	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/npm $(1)/usr/bin/npm
 	$(INSTALL_DIR) $(1)/usr/lib/node_modules
 	$(CP) -r $(PKG_INSTALL_DIR)/usr/lib/node_modules/npm/ \
@@ -95,4 +69,3 @@ endef
 
 $(eval $(call HostBuild))
 $(eval $(call BuildPackage,nodejs))
-$(eval $(call BuildPackage,nodejs-npm))
