@@ -24,17 +24,16 @@ PKG_INSTALL:=1
 include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
 
-define Package/nodejs
-  SUBMENU:=Node.js
+define Package/nodejs/Default
+  SUBMENU:=nodejs
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=Node.js Evented I/O for V8 JavaScript
   URL:=http://nodejs.org
   MAINTAINER:=Xin Ouyang <xinpascal@gmail.com>
-  DEPENDS:=@armeb||@arm||@i386 +libstdcpp +libpthread +librt +libopenssl
 endef
 
-define Package/nodejs/description
+define Package/nodejs/Default/description
  Node.js is a platform built on Chrome's JavaScript runtime for easily
  building fast, scalable network applications. Node.js uses an event-driven,
  non-blocking I/O model that makes it lightweight and efficient, perfect
@@ -42,13 +41,18 @@ define Package/nodejs/description
  devices.
 endef
 
+define Package/nodejs
+$(call Package/nodejs/Default)
+  DEPENDS:=@armeb||@arm||@i386 +libstdcpp +libpthread +librt +libopenssl
+endef
+
+define Package/nodejs/description
+$(call Package/nodejs/Default/description)
+endef
+
 define Package/nodejs-npm
-  SUBMENU:=Node.js
-  SECTION:=lang
-  CATEGORY:=Languages
+$(call Package/nodejs/Default)
   TITLE:=Node Package Manager
-  URL:=https://npmjs.org
-  MAINTAINER:=Xin Ouyang <xinpascal@gmail.com>
   DEPENDS:=@armeb||@arm||@i386 +libstdcpp +libpthread +librt +libopenssl
 endef
 
