@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=nodejs
+PKG_NAME:=node
 PKG_VERSION:=v0.10.17
 PKG_RELEASE:=2
 
