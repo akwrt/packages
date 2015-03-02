@@ -26,8 +26,8 @@ include $(INCLUDE_DIR)/package.mk
 
 define Package/nodejs
   SUBMENU:=Node.js
-  SECTION:=net
-  CATEGORY:=Network
+  SECTION:=lang
+  CATEGORY:=Languages
   TITLE:=Node.js Evented I/O for V8 JavaScript
   URL:=http://nodejs.org
   MAINTAINER:=Xin Ouyang <xinpascal@gmail.com>
