@@ -29,8 +29,7 @@ define Package/nodejs
   CATEGORY:=Languages
   TITLE:=Node.js is a platform built on Chrome's JavaScript runtime
   URL:=http://nodejs.org
-  MAINTAINER:=Xin Ouyang <xinpascal@gmail.com>
-  DEPENDS:=@armeb||@arm||@i386 +libstdcpp +libpthread +librt +libopenssl
+  DEPENDS:=+libstdcpp +libpthread +librt +libopenssl
 endef
 
 define Package/nodejs/description
