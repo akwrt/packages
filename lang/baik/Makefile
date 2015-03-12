@@ -19,7 +19,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/baik
 	SECTION:=lang
 	CATEGORY:=Languages
-	DEPENDS:=+libpthread +libm +libgd +sqlite3
+	DEPENDS:=+libpthread +libm +libgd +sqlite3 +libc
 	TITLE:=Baik Programming Language
 	URL:=http://sourceforge.net/projects/baik/
 	MAINTAINER:=Eka Tresna Irawan <anak10thn@gmail.com>
